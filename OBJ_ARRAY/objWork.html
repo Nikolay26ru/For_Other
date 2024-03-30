@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Копирование Объектов и Массивов (Ссылки vs. Копирование)</title>
+</head>
+
+<body>
+
+  <script>
+    // ## Строки, цифры, boolean
+    // Начнем со строк, цифр и значений true/false
+    let name = 'vasily';
+    let nameTwo = name;
+
+    // У нас есть массив
+    const students = ['Сергей', 'Станислав', 'Мария', 'Павел'];
+
+    // ## Массивы
+    // Мы хотим создать копию массива.
+
+    // Вариант 1 (метод slice)
+    const group1 = students.slice();
+
+    // Вариант 2 (метод concat)
+    const group2 = students.concat();
+
+    // Вариант 3 (оператор spread)
+    const group3 = [...students];
+
+    // Вариант 4 (метод Array.from())
+    const group4 = Array.from(students);
+
+    // ## Объекты
+    // Тоже самое относится к объектам
+    const person = {
+      name: 'Peter',
+      age: 30
+    }
+
+    // Вариант 1 (метод Object.assign())
+    const personCopy1 = Object.assign({}, person);
+
+    // Вариант 2 (используем оператор spread)
+    const personCopy2 = { ...person };
+
+    // Важно! Все способы копирования массивов и объектов подразумевают верхнеуровневое 
+    // копирование - не копируют вложенные объекты! Для копирования объектов с  
+    // несколькими уровнями вложенности можно использовать метод cloneDeep библиотеки lodash.
+
+    const max = {
+      name: 'Max',
+      age: 20,
+      social: {
+        twitter: '@max',
+        facebook: 'maxim'
+      }
+    }
+
+    // Пример использования метода cloneDeep из библиотеки lodash
+    const maxCopy = _.cloneDeep(max);
+
+  </script>
+
+</body>
+
+</html>
